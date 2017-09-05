@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   vars:
+    is_enabled: false
+
+   tasks:
+    - name: "Print hello world if is_enabled is true"
+      debug: msg="This executes of the condition is true"
+      when: is_enabled

@@ -1,0 +1,16 @@
+---
+ - hosts: web
+   become: True
+
+   tasks:
+
+    - name: Print the value of ansible os family
+      debug: var=ansible_os_family
+
+    - name: Install the package if its Debian OS family
+      apt: name=unzip state=latest
+      when: ansible_os_family=="Debian"
+
+    - name: Install the package if its Redhat OS family
+      yum: name=unzip state=latest
+      when: ansible_os_family=="RedHat"

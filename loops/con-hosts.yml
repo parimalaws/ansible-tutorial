@@ -1,0 +1,8 @@
+---
+ - hosts: all
+
+   tasks:
+    - name: print the ostsnames in the hosts inventory file
+      debug: msg="The server names in the hosts file is "{{ item }}""
+      with_items:
+       - "{{ play_hosts }}"

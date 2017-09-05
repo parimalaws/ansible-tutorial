@@ -1,0 +1,8 @@
+---
+ - hosts: all
+   vars:
+    myvar: PingTest
+
+   tasks:
+    - name:'{{ myvar }}'
+      yum: name=wget state=latest

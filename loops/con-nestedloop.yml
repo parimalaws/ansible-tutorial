@@ -1,0 +1,12 @@
+---
+ - hosts: all
+   vars:
+    listA: [1, 2]
+    listB: [a, b]
+   
+   tasks:
+    - name: Say hello using nested loops
+      debug: msg="Thie values in the array are "{{ item[0] }}" and "{{ item[1] }}""
+      with_nested:
+       - "{{ listA }}"
+       - "{{ listB }}"

@@ -1,0 +1,12 @@
+---
+ - hosts: all
+   become: True
+
+   tasks:
+    - name: install 3 packages
+      yum: name={{ item }} state=latest
+      with_items:
+       - vim
+       - git
+       - curl
+

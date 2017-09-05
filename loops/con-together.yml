@@ -1,0 +1,12 @@
+---
+ - hosts: all
+   vars:
+    alpha: ['a', 'b', 'c', 'd']
+    numbers: [1, 2, 3, 4]
+
+   tasks:
+    - name: print these values together
+      debug: msg="{{ item.0 }} and {{item.1 }}"
+      with_together:
+       - "{{ alpha }}"
+       - "{{ numbers }}"

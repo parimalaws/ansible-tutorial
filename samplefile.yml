@@ -1,0 +1,26 @@
+---
+ - name: This playbook runs on webservers
+   hosts: webservers
+   become: True
+   vars:
+     http_port: 80
+     max_clients: 200
+
+   tasks:
+    - file: path=/tmp/sample.txt state=touch
+    - user: name=goutham shell=/bin/sh
+
+ - name: This playbook runs on appservers
+   hosts: appservers
+   become: True
+
+   tasks:
+    - name: creating a directory
+      file: path=/opt/goutham state=directory
+    - name: Create weblogic account id
+      user: name=wpladmin shell=/bin/bash
+
+    - name: Create websphere account id
+      user:
+        name: wasadmin
+        shell:/bin/bash

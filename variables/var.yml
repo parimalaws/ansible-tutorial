@@ -1,0 +1,8 @@
+---
+ - hosts: all
+   vars: 
+    myvar: helloworld
+    http_port: 9091
+   vars_files:
+    - /vars/my_vars.yml
+

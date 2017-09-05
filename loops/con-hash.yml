@@ -1,0 +1,16 @@
+---
+ - hosts: all
+   vars:
+    users:
+     alice:
+      name: Goutham
+      telephone: 12345
+     bob:
+      name: Kumar
+      telephone: 12345
+
+   tasks:
+    - name: Print the phone records
+      debug: msg="User {{item.key}} is {{item.value.name}} ({{item.value.telephone}})"
+      with_dict: "{{ users }}"
+   

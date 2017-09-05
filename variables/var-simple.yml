@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   vars:
+    package: wget
+   become: True
+
+   tasks:
+    - name: Install wget package
+      yum: name={{package}} state=latest

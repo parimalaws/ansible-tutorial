@@ -1,0 +1,11 @@
+[webservers]
+ip-172-31-20-174.us-east-2.compute.internal
+
+[webservers:vars]
+ansible_user=ec2-user
+
+[appservers]
+ip-172-31-23-42.us-east-2.compute.internal
+
+[appservers:vars]
+ansible_user=ec2-user

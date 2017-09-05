@@ -1,0 +1,12 @@
+---
+ - hosts: all
+   become: True
+   vars_files:
+     - vars.yml
+
+   tasks:
+    - name: Print the value of the varaible named package
+      debug: var={{ package }}
+
+    - name: Install the apckage from reading the variable
+      yum: name={{ package }} state=latest

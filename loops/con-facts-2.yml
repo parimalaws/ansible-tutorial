@@ -1,0 +1,22 @@
+---
+ - hosts: web
+   become: True
+
+   tasks:
+    - name: Install the vim application if both the conditions are true
+      yum: name=vim state=latest
+      when: ansible_distribution == "RedHat" and ansible_distribution_major_version == "6"
+
+    - name: Install the vim application if both the conditions are true
+      yum: name=vim state=latest
+      when: ansible_distribution == "RedHat" or ansible_distribution_major_version == "6"
+
+    - name: Install the vim application if both the conditions are true
+      yum: name=vim state=latest
+      when: ansible_distribution == "RedHat" and ansible_distribution_major_version == "7"
+
+    - name: Install the vim application if both the conditions are true
+      yum: name=vim state=latest
+      when: (ansible_distribution == "RedHat" and ansible_distribution_major_version == "7") or
+           (ansible_distribution == "RedHat" and ansible_distribution_major_version == "6")
+
