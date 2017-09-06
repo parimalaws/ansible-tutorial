@@ -1,0 +1,12 @@
+---
+# tasks file for webserver
+
+     - name: ensure apache is installed with latest version
+       yum: name={{ package }} state=latest
+
+     - name: Copy index.html file to remote servers
+       copy: src=/opt/ansible-code/index.html dest=/var/www/html/index.html
+       notify: restart apache
+
+     - name: ensure apache is up and running
+       service: name=httpd state=started

@@ -1,0 +1,37 @@
+---
+
+ - name: This is a playbook to install apache on webservers
+   hosts: web
+   become: True
+
+   tasks:
+     - name: ensure apache is installed with latest version
+       yum: name=httpd state=latest
+
+     - name: Copy index.html file to remote servers
+       copy: src=/opt/ansible-code/index.html dest=/var/www/html/index.html
+       notify: restart apache
+
+     - name: ensure apache is up and running
+       service: name=httpd state=started
+
+   handlers:
+     - name: restart apache
+       service: name=httpd state=restarted
+
+ - name: This is a playbook to intall Maria DB on database servers
+   hosts: db
+   become: True
+
+   tasks:
+     - name: Install my mariab database with latest version
+       yum: name=mariadb state=latest
+
+
+ - name: This is a playbook to install PHP on backend servers/app server
+   hosts: php
+   become: True
+
+   tasks:
+     - name: Install PHP on application servers
+       yum: name=php state=latest

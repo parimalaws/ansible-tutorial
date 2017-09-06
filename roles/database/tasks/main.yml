@@ -1,0 +1,5 @@
+---
+# tasks file for database
+
+     - name: Install my mariab database with latest version
+       yum: name=mariadb state=latest
